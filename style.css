@@ -1,0 +1,234 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@100;200;300;400;500;600;700&display=swap");
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Roboto Mono", monospace;
+}
+.response,
+.listening {
+    color: #fff !important; /* Force white text */
+}
+
+body {
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Main Container */
+.main {
+    width: 100%;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background: linear-gradient(135deg, #000, #121212);
+}
+
+/* Universal white text for responses and listening text */
+.response,
+.listening {
+    color: #fff !important; /* Force white text */
+    font-size: 18px;
+    text-shadow: 0px 0px 5px rgba(255, 255, 255, 0.5);
+    word-wrap: break-word;
+    max-width: 90%;
+    text-align: center;
+}
+
+/* Additional styling for "Listening..." */
+.listening {
+    font-size: 20px;
+    text-shadow: 0px 0px 10px rgba(255, 255, 255, 0.8);
+    animation: fadeInOut 1.5s infinite ease-in-out;
+}
+
+@keyframes fadeInOut {
+    0% { opacity: 0.5; }
+    50% { opacity: 1; }
+    100% { opacity: 0.5; }
+}
+
+/* Logo & Title */
+.main .image-container {
+    padding: 10px;
+    text-align: center;
+}
+
+.main .image-container .image img {
+    width: 300px;
+    animation: fadeIn 1.2s ease-in-out;
+}
+
+.main .image-container h1 {
+    color: #00bcd4;
+    font-size: 40px;
+    margin-bottom: 10px;
+    text-shadow: 0px 0px 10px rgba(0, 188, 212, 0.8);
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+.main .image-container p {
+    color: #ccc;
+    font-size: 18px;
+    margin-bottom: 40px;
+    animation: fadeIn 1.8s ease-in-out;
+}
+
+/* Input Box (Glassmorphism) */
+.main .input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40vw;
+    height: 55px;
+    border-radius: 25px;
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: 0.3s ease-in-out;
+}
+
+.main .input:hover {
+    transform: scale(1.05);
+    border: 1px solid #00bcd4;
+}
+
+/* Microphone Button */
+.main .input .talk {
+    background: transparent;
+    outline: none;
+    border: none;
+    width: 55px;
+    height: 55px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 18px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+}
+
+.main .input .talk i {
+    font-size: 22px;
+    color: #00bcd4;
+    transition: 0.3s ease-in-out;
+}
+
+.main .input .talk:hover i {
+    color: #fff;
+    transform: scale(1.2);
+}
+
+/* Voice Waveform Animation */
+.wave-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.wave-bar {
+    width: 5px;
+    height: 20px;
+    margin: 0 3px;
+    background: #00bcd4;
+    animation: wave 1s infinite ease-in-out;
+}
+
+.wave-bar:nth-child(2) { animation-delay: 0.2s; }
+.wave-bar:nth-child(3) { animation-delay: 0.4s; }
+.wave-bar:nth-child(4) { animation-delay: 0.6s; }
+.wave-bar:nth-child(5) { animation-delay: 0.8s; }
+
+@keyframes wave {
+    0% { transform: scaleY(1); }
+    50% { transform: scaleY(1.5); }
+    100% { transform: scaleY(1); }
+}
+
+/* Fade-in Animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Additional styling for input field, talk button, and typing effect */
+.main .input input {
+    width: 80%;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #fff;
+    font-size: 16px;
+    padding-left: 10px;
+}
+
+.main .input input::placeholder {
+    color: rgba(255, 255, 255, 0.5);
+}
+
+.main .input .talk:hover {
+    box-shadow: 0 0 10px #00bcd4;
+}
+
+.response::after {
+    content: "|";
+    animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+    0% { opacity: 1; }
+    50% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .main .input {
+        width: 80vw;
+        height: 50px;
+    }
+
+    .main .image-container h1 {
+        font-size: 30px;
+    }
+
+    .main .image-container p {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    .main .image-container img {
+        width: 200px; /* Reduce logo size */
+    }
+
+    .main .input {
+        width: 90vw;
+        height: 45px;
+    }
+
+    .main .image-container h1 {
+        font-size: 24px;
+    }
+
+    .main .image-container p {
+        font-size: 14px;
+    }
+    
+    /* Enhanced Waveform Animation for small screens */
+    .wave-bar:nth-child(odd) {
+        height: 25px;
+    }
+    
+    .wave-bar:nth-child(even) {
+        height: 15px;
+    }
+}
