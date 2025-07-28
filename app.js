@@ -301,55 +301,106 @@ function takeCommand(message) {
             }
         }
     
-        else if (message.includes("open google")) {
-            window.open("https://google.com", "_blank");
-            speak("Opening Google...");
-        } 
-        else if (message.includes("hello") || message.includes("hey")) {
-            speak("Hello Boss! How can I assist you today?");
-        } 
-        else if (
-            message.includes("nexus") || 
-            message.includes("hey nexus") || 
-            message.includes("hello nexus")
-        ) {
-            speak("Yes Boss! I am here. How can I assist you?");
-        } 
-        else if (
-            message.includes("tell me about your boss") || 
-            message.includes("tell me about your creator") || 
-            message.includes("who make you") || 
-            message.includes("who developed you") || 
-            message.includes("who made you")
-        ) {
-            window.open("https://www.linkedin.com/in/me/", "_blank");
-            speak("My boss is Raghu. He is a genius who brought me to life! He is creative, intelligent, and always improving me with new features. I am proud to be his assistant.");
-        } 
-        else if (message.includes("open youtube")) {
-            window.open("https://youtube.com", "_blank");
-            speak("Opening YouTube...");
-        } 
-        else if (message.includes("time")) {
-            let currentTime = "The current time is " + new Date().toLocaleTimeString();
-            content.textContent = currentTime;
-            speak(currentTime);
-        } 
-        else if (message.includes("date")) {
-            let currentDate = "Today's date is " + new Date().toLocaleDateString();
-            content.textContent = currentDate;
-            speak(currentDate);
-        } 
-        else if (message.includes("calculator")) {
-            window.open('Calculator:///', '_blank');
-            speak("Opening Calculator...");
-        } 
-        else if (
-            message.includes("lavanya") || 
-            message.includes("n lavanya") || 
-            message.includes("lavanya n")
-        ) {
-            speak("Lavanya, your beauty is not just in your face but in the way your soul lights up my world.");
-        } 
+        else if (message.toLowerCase().includes("open google")) {
+    window.open("https://google.com", "_blank");
+    speak("Opening Google...");
+}
+
+else if (message.toLowerCase().includes("open youtube")) {
+    window.open("https://youtube.com", "_blank");
+    speak("Opening YouTube...");
+}
+
+else if (message.toLowerCase().includes("calculator")) {
+    window.open('Calculator:///', '_blank');
+    speak("Opening Calculator...");
+}
+
+else if (message.toLowerCase().includes("time")) {
+    let currentTime = "The current time is " + new Date().toLocaleTimeString();
+    content.textContent = currentTime;
+    speak(currentTime);
+}
+
+else if (message.toLowerCase().includes("date")) {
+    let currentDate = "Today's date is " + new Date().toLocaleDateString();
+    content.textContent = currentDate;
+    speak(currentDate);
+}
+
+else if (message.toLowerCase().includes("hello") || message.toLowerCase().includes("hey")) {
+    speak("Hello Boss! How can I assist you today?");
+}
+
+else if (
+    message.toLowerCase().includes("nexus") ||
+    message.toLowerCase().includes("hey nexus") ||
+    message.toLowerCase().includes("hello nexus")
+) {
+    speak("Yes Boss! I am here. How can I assist you?");
+}
+
+else if (
+    message.toLowerCase().includes("tell me about your boss") ||
+    message.toLowerCase().includes("tell me about your creator") ||
+    message.toLowerCase().includes("who make you") ||
+    message.toLowerCase().includes("who developed you") ||
+    message.toLowerCase().includes("who made you")
+) {
+    window.open("https://www.linkedin.com/in/me/", "_blank");
+    speak("My boss is Raghu. He is a genius who brought me to life! He is creative, intelligent, and always improving me with new features. I am proud to be his assistant.");
+}
+
+// Lavanya Mood-Based Handler
+else if (
+    message.toLowerCase().includes("lavanya") || 
+    message.toLowerCase().includes("n lavanya") || 
+    message.toLowerCase().includes("lavanya n")
+) {
+    const msg = message.toLowerCase();
+
+    const happyQuotes = [
+        "Lavanya, your laughter is music, and your smile is my favorite melody.",
+        "Lavanya, your joy brightens even the dullest day.",
+        "Lavanya, being around you feels like a celebration of life."
+    ];
+
+    const sadQuotes = [
+        "Lavanya, even when you're silent, your presence comforts my soul.",
+        "Lavanya, your absence is a shadow my heart can't escape.",
+        "Lavanya, even in the darkest moments, the thought of you is a light."
+    ];
+
+    const loveQuotes = [
+        "Lavanya, your beauty is not just in your face but in the way your soul lights up my world.",
+        "Lavanya, even in a crowd, my heart knows where you are.",
+        "Lavanya, if love had a face, it would smile like yours."
+    ];
+
+    const missingQuotes = [
+        "Lavanya, every second without you feels like an eternity.",
+        "Lavanya, I miss the sound of your voice more than words can say.",
+        "Lavanya, my heart whispers your name when you're not around."
+    ];
+
+    let selectedQuotes;
+
+    if (msg.includes("happy") || msg.includes("joy") || msg.includes("smile")) {
+        selectedQuotes = happyQuotes;
+    } else if (msg.includes("sad") || msg.includes("alone") || msg.includes("cry")) {
+        selectedQuotes = sadQuotes;
+    } else if (msg.includes("miss") || msg.includes("missing") || msg.includes("longing")) {
+        selectedQuotes = missingQuotes;
+    } else if (msg.includes("love") || msg.includes("beautiful") || msg.includes("heart")) {
+        selectedQuotes = loveQuotes;
+    } else {
+        selectedQuotes = loveQuotes; // Default fallback
+    }
+
+    const randomIndex = Math.floor(Math.random() * selectedQuotes.length);
+    speak(selectedQuotes[randomIndex]);
+}
+
         else if (/open camera/.test(message)) {
             if (!videoElement) {
                 videoElement = document.createElement("video");
