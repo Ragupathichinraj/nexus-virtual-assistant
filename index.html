@@ -2,133 +2,163 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NEXUS - Virtual Assistant</title>
-    <link rel="shortcut icon" href="RAGU.GIF" type="image/x-icon">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NEXUS - Virtual Assistant</title>
+  <link rel="shortcut icon" href="RAGU.GIF" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Orbitron', sans-serif;
-            background-color: #000;
-            color: #00fff7;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
+  <style>
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
 
-        .main {
-            text-align: center;
-            flex: 1;
-        }
+    body {
+      font-family: 'Orbitron', sans-serif;
+      background-color: #000;
+      color: #00fff7;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+    }
 
-        .image-container {
-            animation: fadeIn 2s ease-in-out;
-        }
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        .image img {
-            max-width: 300px;
-            border-radius: 50%;
-            box-shadow: 0 0 20px #00fff7;
-        }
+    .image-container {
+      animation: fadeIn 2s ease-in-out;
+    }
 
-        h1 {
-            font-size: 3em;
-            letter-spacing: 0.2em;
-            margin-top: 20px;
-            color: #00fff7;
-            text-shadow: 0 0 5px #00fff7;
-        }
+    .image img {
+      max-width: 300px;
+      border-radius: 50%;
+      box-shadow: 0 0 20px #00fff7;
+    }
 
-        p {
-            font-size: 1.2em;
-            margin: 10px 0 30px;
-            color: #aaa;
-        }
+    h1 {
+      font-size: 3em;
+      letter-spacing: 0.1em;
+      margin-top: 20px;
+      color: #00fff7;
+      text-shadow: 0 0 5px #00fff7;
+    }
 
-        .talk {
-            background: #00fff7;
-            color: #000;
-            border: none;
-            padding: 20px;
-            border-radius: 50%;
-            font-size: 2em;
-            box-shadow: 0 0 20px #00fff7;
-            transition: transform 0.3s ease;
-        }
+    p {
+      font-size: 1.2em;
+      margin: 10px 0 30px;
+      color: #aaa;
+    }
 
-        .talk:hover {
-            transform: scale(1.1);
-            cursor: pointer;
-        }
+    .input {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
 
-        .content {
-            margin-top: 20px;
-            color: #fff;
-        }
+    .mic-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
 
-        footer {
-            margin-top: 30px;
-        }
+    .talk {
+      background: #00fff7;
+      color: #000;
+      border: none;
+      padding: 20px;
+      border-radius: 50%;
+      font-size: 2em;
+      box-shadow: 0 0 20px #00fff7;
+      transition: transform 0.3s ease;
+    }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
+    .talk:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
 
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+    .content {
+      margin-top: 15px;
+      font-size: 1.2em;
+      color: #ffffff;
+    }
 
-        @media screen and (max-width: 600px) {
-            h1 {
-                font-size: 2em;
-            }
+    footer {
+      margin-top: 30px;
+    }
 
-            .talk {
-                padding: 15px;
-                font-size: 1.5em;
-            }
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
 
-            .image img {
-                max-width: 200px;
-            }
-        }
-    </style>
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media screen and (max-width: 600px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .talk {
+        padding: 15px;
+        font-size: 1.5em;
+      }
+
+      .image img {
+        max-width: 200px;
+      }
+
+      .content {
+        font-size: 1em;
+      }
+    }
+  </style>
 </head>
 
 <body>
-    <section class="main">
-        <div class="image-container">
-            <div class="image">
-                <img src="giphy.gif" alt="NEXUS GIF">
-            </div>
-            <h1>N E X U S</h1>
-            <p>I’m your Virtual Assistant NEXUS, created by Ragupathi C. How may I help you?</p>
-        </div>
-        <div class="input">
-            <button class="talk"><i class="fas fa-microphone-alt"></i></button>
-            <h1 class="content">Click here to speak</h1>
-        </div>
-    </section>
+  <section class="main">
+    <div class="image-container">
+      <div class="image">
+        <img src="giphy.gif" alt="NEXUS GIF">
+      </div>
+      <h1>N E X U S</h1>
+      <p>I’m your Virtual Assistant NEXUS, created by Ragupathi C.<br>How may I help you?</p>
+    </div>
 
-    <footer>
-        <p style="color: #00fff7; text-align: center; font-size: 14px;">
-            © 2025 Ragupathi C. All Rights Reserved.
-        </p>
-    </footer>
+    <div class="input">
+      <div class="mic-wrapper">
+        <button class="talk"><i class="fas fa-microphone-alt"></i></button>
+        <div class="content">Click here to speak</div>
+      </div>
+    </div>
+  </section>
 
-    <script src="app.js"></script>
+  <footer>
+    <p style="color: #00fff7; text-align: center; font-size: 14px;">
+      © 2025 Ragupathi C. All Rights Reserved.
+    </p>
+  </footer>
+
+  <script src="app.js"></script>
 </body>
 
 </html>
