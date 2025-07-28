@@ -351,7 +351,7 @@ else if (
     speak("My boss is Raghu. He is a genius who brought me to life! He is creative, intelligent, and always improving me with new features. I am proud to be his assistant.");
 }
 
-// Lavanya Mood-Based Handler
+// Lavanya
 else if (
     message.toLowerCase().includes("lavanya") || 
     message.toLowerCase().includes("n lavanya") || 
@@ -360,6 +360,7 @@ else if (
     const msg = message.toLowerCase();
 
     const happyQuotes = [
+        "Lavanya, your beauty is not just in your face but in the way your soul lights up my world.",
         "Lavanya, your laughter is music, and your smile is my favorite melody.",
         "Lavanya, your joy brightens even the dullest day.",
         "Lavanya, being around you feels like a celebration of life."
